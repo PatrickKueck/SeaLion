@@ -11,13 +11,13 @@ To build the container locally inside the code directory we can run the followin
 
 For Apptainer: 
 ```
-cd ./code
+cd ./code_path
 apptainer build SeaLion_container.sif SeaLion_container.def
 ```
 
 For Singularity:
 ```
-cd ./code
+cd ./code_path
 singularity build SeaLion_container.sif SeaLion_container.def
 ```
 
@@ -34,9 +34,9 @@ The workflow can be started with the following command from within the directory
 cd testdata
 CONTAINER="../code/SeaLion_container.sif" # provide the full path to the location of your container.
 
-apptainer exec ${CONTAINER} sealion_gold_beta4.pl -s
+apptainer exec ${CONTAINER} sealion1.pl
 # when using singularity
-singularity exec ${CONTAINER} sealion_gold_beta4.pl -s
+singularity exec ${CONTAINER} sealion1.pl
 ```
 
 
