@@ -1,0 +1,62 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%files
+    ./*.pl /opt/SeaLion/
+    ./*.o /opt/SeaLion/
+
+%environment
+
+export DEBIAN_FRONTEND=noninteractive
+export SRC=/usr/local/src
+export BIN=/usr/local/bin
+export LD_LIBRARY_PATH=/usr/local/lib
+export PATH=/opt/p4-phylogenetics/bin:/opt/SeaLion:$PATH
+export PYTHONPYTH=/opt/p4-phylogenetics:$PYTHONPATH
+export LANG="en_US.utf8"
+export LC_ALL="en_US.utf8"
+export LANGUAGE="en_US.utf8"
+
+%post
+
+# install basic dependencies via apt
+apt-get -y update &&  \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y wget git  build-essential \
+    perl-base libstatistics-r-perl poppler-utils texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra \
+    language-pack-en locales cpanminus && \
+    apt-get clean && \
+    locale-gen "en_US.UTF-8"
+
+# install dependenvies via mamba
+cd /opt/ && \
+    wget -c "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" && \
+    /bin/bash Miniforge3-$(uname)-$(uname -m).sh -bfp /usr/local/ && \
+    mamba install --yes --quiet --channel conda-forge --channel bioconda scipy gsl nlopt bitarray  \
+    r-ggtern r-base r-svglite r-reshape bioconductor-ggtree r-gridextra r-ggplot2==3.4.4 pip && \
+    rm Miniforge3-$(uname)-$(uname -m).sh
+
+# install perl module
+cpanm File::Find::Rule
+
+pip install numpy 
+# install P4
+cd /opt/ && \
+    git clone https://github.com/pgfoster/p4-phylogenetics && \
+    cd p4-phylogenetics && \
+    python setup.py build && \
+    python -m pip install .
+    
+# make SeaLion skripts available
+chmod 777 /opt/SeaLion/*.pl 
+
+%runscript
+
+cd /opt/
+exec /bin/bash "$@"
+%startscript
+cd /opt/
+exec /bin/bash "$@"
+
+
+%labels
+AUTHOR Sebastian Martin, Leibniz Institute for the Analysis of Biodiversity Change (LIB)
