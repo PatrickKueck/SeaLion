@@ -11,18 +11,16 @@ To build the container locally inside the code directory we can run the followin
 
 For Apptainer: 
 ```
-cd ./code_path
 apptainer build SeaLion_container.sif SeaLion_container.def
 ```
 
 For Singularity:
 ```
-cd ./code_path
 singularity build SeaLion_container.sif SeaLion_container.def
 ```
 
 
-The above command needs to be excecuted in the same directory as the perl scirpts, which will be imported in the container during the build process.
+The above command needs to be excecuted in the same directory as the SeaLion Perl script and the icebreaker.o file, which will be imported in the container during the build process.
 
 
 ## Run software 
@@ -31,7 +29,6 @@ The workflow can be started with the following command from within the directory
 
 
 ```
-cd testdata
 CONTAINER="../code/SeaLion_container.sif" # provide the full path to the location of your container.
 
 apptainer exec ${CONTAINER} sealion1.pl
