@@ -70,8 +70,8 @@ my	%value_of_scr_par	=	(
 							'ice_bin'					=>	'icebreaker.o'				,	# SeaLion parameter: name of the terminal-executable icebreaker tree-fishing script
 							'mean'						=>	1							,	# SeaLion parameter: if defined '1', calculation and print of mean support results. Blocked if '0'
 							'median'					=>	1							,	# SeaLion parameter: if defined '1', calculation and print of median support results. Blocked if '0'
-							'request'					=>	1							,	# SeaLion parameter: if defined '1', no user request if maximum limit of quartet analyses is lower than total number of available quartets of a 4clan combination
-							'restart'					=>	1							,	# SeaLion parameter: if defined '1', using already existing P4 files from defined filepath 'i_main'
+							'request'					=>	0							,	# SeaLion parameter: if defined '1', no user request if maximum limit of quartet analyses is lower than total number of available quartets of a 4clan combination
+							'restart'					=>	0							,	# SeaLion parameter: if defined '1', using already existing P4 files from defined filepath 'i_main'
 							'p4data'					=>	0							,	# SeaLion parameter: if defined '1', keep p4 results in an extra folder, otherwise delete p4 output after data processing
 							'rycoding'					=>	0							,	# SeaLion parameter: if defined '1', recode sequence characters to RY, do not otherwise
 							'spdfname'					=>	"*_split_calc_q*.txt"		,	# SeaLion parameter: Filename_prt for split-pattern distribution outfiles. Pattern is needed for path finding and input reading
@@ -9739,7 +9739,7 @@ sub print_script_settings{
 						"\tMSA infile:\t\t" 		, $href_value_of_scr_par->{menu_parameter}{msa_infile}		, "\n" ,
 						"\tClade infile:\t\t" 		, $href_value_of_scr_par->{menu_parameter}{clfile} 			, "\n",
 						"\tOutgroup clade:\t\t" 	, $href_value_of_scr_par->{menu_parameter}{outgroup}		, "\n",
-						"\tNmax quartets" 			, $href_value_of_scr_par->{menu_parameter}{maxquartets}		, "\n", 
+						"\tNmax quartets:\t\t" 			, $href_value_of_scr_par->{menu_parameter}{maxquartets}		, "\n", 
 						"\tNmin quartet sites:\t"	, $href_value_of_scr_par->{menu_parameter}{minlengths}		, "\n", 
 						"\tSupport-Type:\t\t"		, $href_value_of_scr_par->{menu_parameter}{average}			, "\n", 
 						"\tSPD infile DIR:\t\t"		, $href_value_of_scr_par->{menu_parameter}{spd_folder}		, "/\n", 
