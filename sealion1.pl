@@ -116,7 +116,7 @@ my	%value_of_scr_par	=	(
 my	%print_Rplot_quartets	=	(
 	
 	# MAIN
-	'ggtree_rooted_clade_trees'					=>	1 , # R1*	treeplot:		MAIN	UserVersion	
+	'ggtree_rooted_clade_trees'					=>	0 , # R1*	treeplot:		MAIN	UserVersion	
 	'pline_taxsupport_clan4'					=>	1 , # T2*	Lineplot:		MAIN	UserVersion	R lineplot of single, mean, and median taxon related unfiltered quartet support
 	'ptern_taxsupport_clan4'					=>	1 , # T1*	Ternaryplot:	MAIN	UserVersion	R ternary plot of single, mean, and median taxon related unfiltered quartet support
 	'pbarplot_treesuccess_mclan'				=>	1 , # MQ3*	Barplot:		MAIN	UserVersion	adapted	R ternary plot of single, mean, and median unfiltered quartet support
