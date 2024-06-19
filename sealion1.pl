@@ -6990,6 +6990,8 @@ sub latex_data_sample_LQ3{
 				$total_rem += $href_hoh_qremaining_of_otu_of_4clan_of_ft->{$ftype}{$t}{$clan4}
 			}
 			
+			$total_rej =  $total_rej / 3 ;
+			$total_rem =  $total_rem / 3 ;
 			my $total_all = $total_rej + $total_rem ;
 			############
 			
